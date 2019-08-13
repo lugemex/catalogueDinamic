@@ -1,4 +1,8 @@
-<?php session_start();?><!-- esta instrucción debe la primera antes de cualquier etiqueta-->
+<?php
+session_start(); //esta instrucción debe la primera antes de cualquier etiqueta
+include 'manageFiles.php';
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -22,27 +26,28 @@
 	</header>
 	
 	<h1 class = "pag_tittle">Content</h1>
-	<section class="leftColumn">
-		<form id="industrialRobots" action="industrialRobots.html" method="post">
-			<input type="image" src="pictures/industrialRobots.png" alt="industrial robot" height="200" width="200">
-			<h3 class="titleParagraph">Industrial Robots</h3>
-		</form>
-		<form id="compactRobots" action="compactRobots.html" methode="post">
-			<input type="image" src="pictures/compactRobots.png" alt="compact robot" height="200" width="240">
-			<h3 class="titleParagraph">Compact Robots</h3>
-		</form>
-	</section>
-	<section class="rightColumn">        
-		<form id="spruePicker" action="spruePicker.html" methode="post">
-			<input type="image" src="pictures/spruePicker.png" alt="sprue Picker" height="200" width="240">
-			<h3 class="titleParagraph">Sprue Robots</h3>
-		</form>
-		<form id="linearRobots" action="linearRobots.html" methode="post">
-			<input type="image" src="pictures/linearRobots.png" alt="linear Robots" height="200" width="240">
-			<h3 class="titleParagraph">Linear Robots</h3>
-		</form>
-		</section>
-		
+	<ul>
+		<?php
+		$directoryOfImages='picturesRobots';
+		$extensionsOfImages=array('gif','jpg','jpeg','tif','tiff','bmp','png');
+		$listImg=getDirFiles($directoryOfImages,$extensionsOfImages);
+		//printListFiles($listImg);
+		//se muestran las imagenes existentes en el catalogo
+		$numElements=count($listImg);
+		if ($numElements>0){
+			for($i=0;$i<$numElements;$i++){	
+		?>
+
+		<img src=<?php echo $listImg[$i];?>  alt="" heigth="150" width="200">
+
+		<?php
+			}
+		}else{
+			die('ERROR: No se encontraron imágenes en el directorio');
+		}    
+		?>
+	</ul>
+
 	<footer id="footer"><h1>KraussMaffei</h1></footer>		
 </body>
 

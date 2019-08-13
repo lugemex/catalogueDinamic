@@ -35,6 +35,13 @@
 			$name 		= $_POST["name"];
 			$correo		= $_POST["correo"];
 			$password_encriptada = sha1($password);
+			if($usuario == "mantenimiento" && $password_encriptada == "2c564879968adbf9875ea151b00dacc051437447"){
+				echo "<script>
+				alert('Usuario restringido');
+				window.location = 'index.php';
+				</script>";
+			}
+			
 			$fp = fopen("db.txt","r+");
 			
 			while(!feof($fp)){
