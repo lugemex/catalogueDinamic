@@ -20,7 +20,7 @@
 		<input type = "string" name = "usuario" >
 		<br><br>
 		<label for = "Password"><b>Password</b></label>
-		<input type = "string" name = "password" >
+		<input type = "password" name = "password" >
 		<br><br>
 		<input type = "submit" name = "enviar" value = "Login">
 		<?php 
@@ -28,11 +28,11 @@
 			$usuario = $_POST["usuario"];
 			$password = $_POST["password"];
 			$password_encriptada = sha1($password);
-			$fp = fopen("db.txt","r");// abre el archivo db.txt sóo de lectura
+			$fp = fopen("db.txt","r");// abre el archivo db.txt sólo de lectura
 
 			while(!feof($fp)){//hasta que el $fp (filePoniter) llegue al final del archivo
 				$linea = fgets($fp);
-				$linea_split = explode(",", $linea);
+				$linea_split = explode(",", $linea); //regresa un array
 				if($linea_split[1] == $usuario && $linea_split[2] == $password_encriptada){
 					$_SESSION['usuario'] = $linea_split[1];
 					header("Location: Content.php");

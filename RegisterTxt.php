@@ -39,7 +39,7 @@
 			
 			while(!feof($fp)){
 				$linea = fgets($fp);
-				$linea_split = explode(",",$linea);
+				$linea_split = explode(",",$linea); //regresa un array
 				if($linea_split[1] == $usuario || $linea_split[4] == $correo){
 					echo "<script>
 						alert('Usuario ya registrado');
@@ -56,10 +56,13 @@
 					$name.",".
 					$correo.","
 					);
+					echo "<script>
+					alert('Usuario registrado exitosamente');
+					window.location = 'LoginTxt.php';
+					</script>";
 				}
 			}
 			fclose($fp);
-			header("Location: LoginTxt.php");
 		}
 		?>
 	</form>
