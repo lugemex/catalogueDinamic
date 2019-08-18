@@ -18,6 +18,9 @@ include 'manageFiles.php';
 			<span class = "nav_header"><?php echo "Welcome: ".utf8_decode($_SESSION['usuario']);?></span>
 			<input type = "submit" name = "logout" value = "Logout">
 			<?php
+			if(empty($_SESSION)){
+				header("Location: index.php");
+			}
 			if(isset($_POST["logout"])){
 				header("Location: Logout.php");
 			}

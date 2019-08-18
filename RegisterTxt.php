@@ -25,7 +25,7 @@
 		<input type = "String" name = "name" required>
 		<br><br>
 		<label for "correo"><b>Correo</b></label>
-		<input type = "String" name = "correo" required>
+		<input type = "email" name = "correo" required>
 		<br><br>
 		<input type = "submit" name = "enviar" value = "Register">
 		<?php
